@@ -23,7 +23,7 @@ ADD etc/supervisor/conf.d/taiko-web.conf /etc/supervisor/conf.d/taiko-web.conf
 
 RUN chmod +x /opt/launch.sh
 
-EXPOSE 80
+EXPOSE 8080
 
 RUN rm -rf /var/lib/apt/lists/*
 CMD [ "/opt/launch.sh" ]
