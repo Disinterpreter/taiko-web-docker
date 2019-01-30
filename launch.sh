@@ -6,6 +6,6 @@ echo 127.0.0.1 localhost > /etc/hosts
 mkdir /var/tmp/nginx
 
 envsubst \$PORT < /nginx-template/taiko-web.template > /etc/nginx/conf.d/*.conf
-sed -i -E "s/^user .*/user $(whoami);/" /etc/nginx/nginx.conf
+
 supervisord -n
 
