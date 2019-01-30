@@ -3,6 +3,8 @@ services:
   taiko-web-server:
     build: .
     container_name: taiko-server
+    environment:
+      PORT: 8080
     ports:
       - '80:8080'
     volumes:

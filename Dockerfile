@@ -1,7 +1,7 @@
 FROM debian:stretch
 
 RUN apt update && \
-  apt install -y git sqlite3 python2.7 python-virtualenv python3.5 python-pip python3-pip python3-virtualenv ffmpeg nginx bash telnet supervisor && \
+  apt install -y git sqlite3 python2.7 python-virtualenv python3.5 python-pip python3-pip python3-virtualenv ffmpeg nginx bash telnet supervisor gettext-base && \
   mkdir -p /srv/taiko-web
 
 RUN mkdir -p /srv/taiko-web && virtualenv -p /usr/bin/python2 .venv2 && \
@@ -18,7 +18,8 @@ RUN cd /srv/taiko-web && mkdir -p public/songs
 ENV PATH "/usr/bin:/usr/sbin:/bin:/usr/local/bin"
 ADD launch.sh /opt
 
-ADD etc/nginx/sites-enabled /etc/nginx/sites-enabled
+ADD nginx-template /nginx-template
+RUN mkdir -p /etc/nginx/sites-enabled
 ADD etc/supervisor/conf.d/taiko-web.conf /etc/supervisor/conf.d/taiko-web.conf
 
 RUN chmod +x /opt/launch.sh
