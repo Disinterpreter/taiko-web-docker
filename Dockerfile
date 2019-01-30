@@ -1,7 +1,7 @@
-FROM debian:stretch
+FROM nginx:1.15.8
 
 RUN apt update && \
-  apt install -y git sqlite3 python2.7 python-virtualenv python3.5 python-pip python3-pip python3-virtualenv ffmpeg nginx bash telnet supervisor gettext-base sudo && \
+  apt install -y git sqlite3 python2.7 python-virtualenv python3.5 python-pip python3-pip python3-virtualenv ffmpeg bash telnet supervisor gettext-base && \
   mkdir -p /srv/taiko-web
 
 RUN mkdir -p /srv/taiko-web && virtualenv -p /usr/bin/python2 .venv2 && \
@@ -10,7 +10,6 @@ RUN mkdir -p /srv/taiko-web && virtualenv -p /usr/bin/python2 .venv2 && \
   pip3 install websockets
 
 RUN git clone https://git.taiko.zone/bui/taiko-web.git /srv/taiko-web && \
-  rm /etc/nginx/sites-enabled/default && \
   cd /srv/taiko-web
 
 RUN cd /srv/taiko-web && mkdir -p public/songs
