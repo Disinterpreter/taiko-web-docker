@@ -1,23 +1,11 @@
-version: "2"
-
+version: '2'
 services:
   taiko-web-server:
     build: .
     container_name: taiko-server
-    #ports:
-    #  - 80:80
+    ports:
+      - '80:80'
     volumes:
-      # - ./etc/nginx/sites-enabled:/etc/nginx/sites-enabled
-      - ./db/taiko.db:/srv/taiko-web/taiko.db
-      - ./songs:/srv/taiko-web/public/songs
-      - ./etc/config.json:/srv/taiko-web/config.json
-    networks:
-        taiko:
-            ipv4_address: 10.6.0.6
-networks:
-  taiko:
-    driver: bridge
-    ipam:
-        config:
-        - subnet: 10.6.0.0/16
-          gateway: 10.6.0.1
+      - './db/taiko.db:/srv/taiko-web/taiko.db'
+      - './songs:/srv/taiko-web/public/songs'
+      - './etc/config.json:/srv/taiko-web/config.json'
