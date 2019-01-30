@@ -1,7 +1,7 @@
 FROM debian:stretch
 
 RUN apt update && \
-  apt install -y git sqlite3 python2.7 python-virtualenv python3.5 python-pip python3-pip python3-virtualenv ffmpeg nginx bash telnet supervisor gettext-base && \
+  apt install -y git sqlite3 python2.7 python-virtualenv python3.5 python-pip python3-pip python3-virtualenv ffmpeg nginx bash telnet supervisor gettext-base sudo && \
   mkdir -p /srv/taiko-web
 
 RUN mkdir -p /srv/taiko-web && virtualenv -p /usr/bin/python2 .venv2 && \
