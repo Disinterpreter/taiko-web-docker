@@ -10,13 +10,15 @@ RUN mkdir -p /srv/taiko-web && virtualenv -p /usr/bin/python2 .venv2 && \
     pip3 install websockets
 
 RUN git clone https://git.taiko.zone/bui/taiko-web.git /srv/taiko-web && \
-    service nginx restart && \
+    rm /etc/nginx/sites-enabled/default && \
     cd /srv/taiko-web
 
 RUN cd /srv/taiko-web && mkdir -p public/songs
 
 ENV PATH "/usr/bin:/usr/sbin:/bin:/usr/local/bin"
 ADD launch.sh /opt
+
+ADD etc/nginx/sites-enabled /etc/nginx/sites-enabled
 
 RUN chmod +x /opt/launch.sh
 

@@ -7,7 +7,7 @@ services:
     #ports:
     #  - 80:80
     volumes:
-      - ./etc/nginx/conf.d:/etc/nginx/sites-enabled
+      # - ./etc/nginx/sites-enabled:/etc/nginx/sites-enabled
       - ./db/taiko.db:/srv/taiko-web/taiko.db
       - ./songs:/srv/taiko-web/public/songs
       - ./etc/config.json:/srv/taiko-web/config.json
