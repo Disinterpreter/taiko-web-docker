@@ -15,6 +15,6 @@ If you want to launch the container you need to use this command (this command w
 docker-compose up -d --build
 ```
 
-After that, the container will create an interface and make a binding to `10.6.0.6` on port `80` (you can change it in docker-compose.yml)
+After that, the container will make a binding on port `8080` (you can change it in docker-compose.yml)
 
 If you have any questions or suggestions, ask in the [Taiko no Tatsujin Discord](https://discord.gg/ZpW62Vf)
