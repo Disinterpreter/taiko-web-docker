@@ -1,6 +1,9 @@
 {
   "name": "taiko-web",
   "description": "A barebones Node.js app using Express 4",
-  "repository": "https://github.com/Disinterpreter/taiko-web-docker",
-  "stack": "container"
+  "repository": "https://github.com/darkcl/taiko-web-docker",
+  "stack": "container",
+  "env": {
+    "PORT": "80"
+  }
 }
