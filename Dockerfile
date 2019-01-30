@@ -21,6 +21,10 @@ ADD nginx-template /nginx-template
 RUN mkdir -p /etc/nginx/sites-enabled
 ADD etc/supervisor/conf.d/taiko-web.conf /etc/supervisor/conf.d/taiko-web.conf
 
+ADD db/taiko.db /srv/taiko-web/taiko.db
+ADD songs /srv/taiko-web/public/songs
+ADD etc/config.json /srv/taiko-web/config.json
+
 RUN chmod +x /opt/launch.sh
 
 EXPOSE 8080
