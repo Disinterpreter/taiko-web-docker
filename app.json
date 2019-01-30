@@ -1,0 +1,6 @@
+{
+  "name": "taiko-web",
+  "description": "Taiko no Tatsujin",
+  "repository": "https://github.com/Disinterpreter/taiko-web-docker",
+  "stack": "container"
+}
