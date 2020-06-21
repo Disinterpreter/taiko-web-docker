@@ -4,10 +4,33 @@ services:
     build: .
     container_name: taiko-server
     environment:
-      PORT: 8080
+      PORT: 80
     ports:
-      - '80:8080'
+      - '80:80'
     volumes:
       - './db/taiko.db:/srv/taiko-web/taiko.db'
       - './songs:/srv/taiko-web/public/songs'
       - './etc/config.json:/srv/taiko-web/config.json'
+  mongo:
+    restart: always
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+  mongo-express:
+    restart: always
+    image: mongo-express
+    ports:
+      - '8081:8081'
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: user
+      ME_CONFIG_BASICAUTH_PASSWORD: pass
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+      ME_CONFIG_REQUEST_SIZE: '1024m'
+      ME_CONFIG_SITE_BASEURL: '/'
+      ME_CONFIG_SITE_COOKIESECRET: secret1
+      ME_CONFIG_SITE_SESSIONSECRET: secret2
+  redis:
+    restart: always
+    image: redis:alpine
